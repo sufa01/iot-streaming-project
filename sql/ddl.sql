@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS device_types (
+    id INTEGER PRIMARY KEY,
+    type_name VARCHAR(50) NOT NULL
+);

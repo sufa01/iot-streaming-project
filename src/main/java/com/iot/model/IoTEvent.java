@@ -14,15 +14,13 @@ public class IoTEvent implements Serializable {
     private int deviceTypeId;
 
     @JsonProperty("timestamp")
-    private long timestamp; // Unix timestamp в миллисекундах
+    private long timestamp; 
 
     @JsonProperty("temperature")
     private double temperature;
 
     @JsonProperty("humidity")
     private int humidity;
-
-    // Конструктор по умолчанию (нужен для десериализации)
     public IoTEvent() {}
 
     public IoTEvent(int deviceTypeId, long timestamp, double temperature, int humidity) {

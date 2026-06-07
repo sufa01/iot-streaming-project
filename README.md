@@ -15,6 +15,7 @@
 - **Синк**: результат в Kafka topic `iot-aggregates`.
 
 ## Структура проекта
+```
 iot-streaming-project/
 ├── pom.xml
 ├── docker-compose.yml
@@ -35,6 +36,7 @@ iot-streaming-project/
 │   ├── create-topics.sh
 │   └── run-producer.sh
 └── README.md
+```
 
 ## Требования
 - Docker и Docker Compose

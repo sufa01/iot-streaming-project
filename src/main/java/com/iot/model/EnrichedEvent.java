@@ -10,12 +10,12 @@ public class EnrichedEvent implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private int deviceTypeId;
-    private String typeName;        // Название типа устройства из PostgreSQL
-    private long timestamp;         // Время события (мс)
+    private String typeName;        
+    private long timestamp;         
     private double temperature;
     private int humidity;
 
-    // Конструктор по умолчанию (для Flink сериализации)
+    // Конструктор по умолчанию
     public EnrichedEvent() {}
 
     public EnrichedEvent(int deviceTypeId, String typeName, long timestamp, double temperature, int humidity) {

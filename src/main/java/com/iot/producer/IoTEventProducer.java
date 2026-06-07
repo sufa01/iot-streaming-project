@@ -23,8 +23,8 @@ public class IoTEventProducer {
             IoTEvent event = new IoTEvent(
                 deviceTypeIds[rand.nextInt(deviceTypeIds.length)],
                 now,
-                15.0 + rand.nextDouble() * 20,   // температура 15-35
-                rand.nextInt(100)                 // влажность 0-99
+                15.0 + rand.nextDouble() * 20, 
+                rand.nextInt(100)             
             );
             String json = mapper.writeValueAsString(event);
             producer.send(new ProducerRecord<>("iot-events", json));

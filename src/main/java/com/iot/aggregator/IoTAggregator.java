@@ -47,8 +47,7 @@ public class IoTAggregator {
             ")"
         );
 
-        // 2. Source: PostgreSQL справочник (как временная таблица, но мы сделаем lookup join)
-        // Создадим JDBC таблицу для lookup
+        // 2. Source: PostgreSQL справочник
         tEnv.executeSql(
             "CREATE TABLE device_types (\n" +
             "  id INT,\n" +
@@ -65,7 +64,7 @@ public class IoTAggregator {
             ")"
         );
 
-        // 3. Join потока со справочником (обогащение)
+        // 3. Join потока со справочником
         Table enriched = tEnv.sqlQuery(
             "SELECT \n" +
             "  i.deviceTypeId,\n" +
@@ -82,7 +81,7 @@ public class IoTAggregator {
         // 4. Переход из Table API в DataStream API для оконной агрегации с медианой
         DataStream<Row> enrichedStream = tEnv.toDataStream(enriched);
 
-        // Назначаем водяные знаки и event time (из поля timestamp)
+        // Назначаем водяные знаки и event time
         DataStream<Row> withWatermark = enrichedStream.assignTimestampsAndWatermarks(
             WatermarkStrategy.<Row>forBoundedOutOfOrderness(Duration.ofSeconds(5))
                 .withTimestampAssigner((row, ts) -> row.getFieldAs("timestamp"))

@@ -14,7 +14,7 @@ public class AggregateResult implements Serializable {
 
     private int deviceTypeId;
     private String typeName;
-    private long windowEnd;          // метка времени окончания окна (мс)
+    private long windowEnd;          
     private double avgTemperature;
     private double medianHumidity;
 
